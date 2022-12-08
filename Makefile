@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+         #
+#    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 23:59:55 by qnguyen           #+#    #+#              #
-#    Updated: 2022/12/05 18:51:48 by vkinnune         ###   ########.fr        #
+#    Updated: 2022/12/08 23:57:56 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ COR_DIR = srcs/corewar/
 # add new .c files here
 COR_FILE = main player_handler error error2 utilities parse process process_util \
 			 corewar player_sort instruction instruction2 instruction3 instruc_util \
-			 init print verbose verbose2 verbose3
+			 init print verbose verbose2 verbose3 flag_handler
 COR_OBJS_DIR = objs/corewar/
 COR_OBJS = $(addprefix $(COR_OBJS_DIR), $(addsuffix .o, $(COR_FILE)))
 

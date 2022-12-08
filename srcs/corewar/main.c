@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:10:51 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/05 23:39:47 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:45:44 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ void	print_man_page(void)
 		"\t\t\t 8: Prints deaths\n"
 		"\t\t\t16: Show PC movements (Except for jumps)\n"
 		"\t-n\n"
-		"\t\tAssign the player's number manually\n");
+		"\t\tAssign the player's number manually\n"
+		"\t-a\n"
+		"\t\tPrints aff operation to standard output\n");
 	print_and_exit(0);
 }
 

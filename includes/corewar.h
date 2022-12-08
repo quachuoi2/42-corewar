@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:32:42 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/05 18:06:03 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/12/09 00:07:11 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ void		print_man_page(void);
 
 //parse.c
 void		parse(t_header_t *player, char **argv, int argc);
+
+//flag_handler.c
+void		flag_handler(char **argv, int argc, uint8_t *i);
 
 //player_handler.c
 void		assign_player(t_header_t *player,

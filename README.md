@@ -21,15 +21,15 @@ we are asking you for a gladiator fight, not a one-man show simulator.
 
 `./asm <your_champ.s>` to compile your champion
 
-(Work in progress)
-
 ### Corewar
 
 `./corewar [optional flags] <your_champ.cor>` to have your champ go beat other people up
 
 ### Test script
 
-`./apustaja.sh` and follow the **VERY INTUITIVE** instructions
+`./asm_apu.sh` to run tests for the assembler
+`./core_apu.sh` to run tests for the VM
+and follow the **VERY INTUITIVE** instructions
 
 ## Note
 
