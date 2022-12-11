@@ -31,9 +31,9 @@ we are asking you for a gladiator fight, not a one-man show simulator.
 
 ### Test script
 
-`./asm_apu.sh` to run tests for the assembler
+`./scripts/asm_apu.sh` to run tests for the assembler
 
-`./core_apu.sh` to run tests for the VM
+`./scripts/corewar_apu.sh` to run tests for the VM
 
 and follow the **VERY INTUITIVE** instructions
 
