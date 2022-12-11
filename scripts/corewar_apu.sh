@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/20 21:11:39 by qnguyen           #+#    #+#              #
-#    Updated: 2022/12/05 22:17:09 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/12/11 06:25:17 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,14 @@ YELLOW='\e[93m'
 NORMAL='\e[0m'
 
 OUR_CORE=./corewar
-TEST_CORE=./resources/vm_champs/corewar
+if [[ ${OSTYPE} == "darwin18" ]]
+then
+	TEST_CORE=./resources/corewar
+else
+	TEST_CORE=./resources/qnguyen_corewar
+fi
 
 CHAMP_DIR=./testchamp/valid_core
-
 RESULT_FILE=./scripts/core_result
 TEST_RESULT=./scripts/core_test_result
 TIME_RESULT=./scripts/core_time
@@ -112,25 +116,27 @@ test_v_flag()
 	for ((i=0; i<${count}; i++))
 	do
 		string+="${champs[$i]} "
-		echo "$(echo ${champs[$i]})"
+		echo ${champs[$i]}
 	done
 	printf "\n$NORMAL"
 	(time $OUR_CORE -v $flag ${string} > ${RESULT_FILE}) 2>${TIME_RESULT}
 	(time $TEST_CORE -v $flag ${string} > ${TEST_RESULT}) 2>${TEST_TIME_RESULT}
 
-	diff=$(cmp ${RESULT_FILE} ${TEST_RESULT})
-	if [[ $diff != "" ]]
+	diff=$(cmp ${RESULT_FILE} ${TEST_RESULT} 2>&1)
+	if [[ ${diff} != "" ]]
 	then
-		printf "\n${RED}haha RIP (≧∇≦)ﾉ\n${NORMAL}"
-		printf "$diff\n"
+		printf "${RED}haha RIP (≧∇≦)ﾉ\n${NORMAL}"
+		printf "${diff}\n"
+		if [[ ${diff} == *"which is empty"* ]]
+		then
+			exit
+		fi
 		line=$(echo $diff | rev | cut -d ' ' -f 1 | rev)
 		printf "${RED}Yours:  $(sed -n ${line}p ${RESULT_FILE})\n"
 		printf "${GREEN}Test's: $(sed -n ${line}p ${TEST_RESULT})\n${NORMAL}"
 		exit
 	fi
-
 	printf "${GREEN}All of your instructions executed perfectly (and the printing too), me proud very (￣︶￣;)\n$NORMAL"
-
 	runtime=$(tail -n 3 ${TIME_RESULT} | head -n 1 | cut -d '	' -f 2)
 	printf "It took you $BLUE${runtime}$NORMAL to run\n"
 	test_runtime=$(tail -n 3 ${TEST_TIME_RESULT} | head -n 1 | cut -d '	' -f 2)
@@ -138,8 +144,8 @@ test_v_flag()
 	if [[ $runtime < $test_runtime ]]
 	then
 		printf "You fast af ${BLUE}>─=≡Σ((( つ•̀ω•́)つ\n\n$NORMAL"
-		rm -f ${RESULT_FILE} ${TEST_RESULT} ${TIME_RESULT} ${TEST_TIME_RESULT}
 	fi
+	rm -f ${RESULT_FILE} ${TEST_RESULT} ${TIME_RESULT} ${TEST_TIME_RESULT}
 }
 
 more_test()

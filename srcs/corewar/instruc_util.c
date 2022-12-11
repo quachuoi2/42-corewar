@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:08:22 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/05 23:03:46 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/12/11 04:32:03 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int32_t	get_arg_value(t_process *process, t_arg *arg)
 	return (arg->value);
 }
 
-int8_t	check_reg(t_process *process, uint8_t cur_2bit,
+static int8_t	check_reg(t_process *process, uint8_t cur_2bit,
 			uint8_t arg_type, t_arg *arg)
 {
 	uint16_t	pos;
@@ -42,7 +42,7 @@ int8_t	check_reg(t_process *process, uint8_t cur_2bit,
 	return (OKEI);
 }
 
-int8_t	check_dir(t_process *process, uint8_t cur_2bit,
+static int8_t	check_dir(t_process *process, uint8_t cur_2bit,
 			uint8_t arg_type, t_arg *arg)
 {
 	uint8_t		byte_ammount;
@@ -60,7 +60,7 @@ int8_t	check_dir(t_process *process, uint8_t cur_2bit,
 	return (OKEI);
 }
 
-int8_t	check_ind(t_process *process, uint8_t cur_2bit,
+static int8_t	check_ind(t_process *process, uint8_t cur_2bit,
 			uint8_t arg_type, t_arg *arg)
 {
 	uint16_t	pos;
@@ -84,10 +84,10 @@ int8_t	check_matching_arg(t_process *process, t_arg *arg)
 	uint8_t		op_arg_type;
 	int8_t		result;
 
-	i = 0;
-	result = OKEI;
 	if (g_op_tab[process->cmd].arg_byte == 0)
 		return (OKEI);
+	result = OKEI;
+	i = 0;
 	process->bytes_to_next++;
 	while (i < g_op_tab[process->cmd].arg_amt)
 	{

@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 10:49:12 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/03 18:00:52 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/12/11 05:42:53 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_flag(char **fmt);
 void	check_conv(char **fmt);
 
 //init.c
-void	printf_init(int *fd, int *char_count, int *str_idx);
+void	printf_init(int *fd, int *char_count);
 void	initialize_order(int fd);
 
 //utilities.c

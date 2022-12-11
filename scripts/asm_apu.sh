@@ -6,12 +6,18 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 22:44:04 by qnguyen           #+#    #+#              #
-#    Updated: 2022/12/05 21:47:36 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/12/11 06:26:56 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 OUR_ASM=./asm
-TEST_ASM=./resources/vm_champs/asm
+if [[ ${OSTYPE} == "darwin18" ]]
+then
+	TEST_ASM=./resources/asm
+else
+	TEST_ASM=./resources/qnguyen_asm
+fi
+
 CURRENT_DIR=./scripts
 ASM_DIR=./testchamp/valid_asm
 
@@ -78,7 +84,7 @@ test_asm()
 		hexdump -vC "${cor_champ}" > ${RESULT_FILE}
 		rm ${cor_champ}
 	fi
-	differs=$(diff ${RESULT_FILE} ${TEST_RESULT})
+	differs=$(diff ${RESULT_FILE} ${TEST_RESULT} 2>&1)
 	if [[ $differs == "" ]]
 	then
 		printf "${GREEN}Hihi me see no diff ( っ´ω｀c)${NORMAL}\n"

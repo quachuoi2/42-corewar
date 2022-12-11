@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:10:51 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/08 23:45:44 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/12/11 07:01:01 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	print_man_page(void)
 		"\t-n\n"
 		"\t\tAssign the player's number manually\n"
 		"\t-a\n"
-		"\t\tPrints aff operation to standard output\n");
+		"\t\tPrints aff operation to standard output\n"
+		"\t-diss\n"
+		"\t\tDisassemble the .cor file back to .s (this flag must be set"
+		" before the champions)\n");
 	print_and_exit(0);
 }
 
@@ -44,7 +47,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		print_man_page();
 	flag_init();
-	initialize_players(player);
+	players_init(player);
 	parse(player, argv, argc);
 	corewar(player);
 	return (0);

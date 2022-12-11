@@ -2,7 +2,8 @@
 .comment "hehe"
 
 live %-1
-ld 1, r2
+ld %65, r2
+aff r2
 lld 1, r2
 ldi 2, %2, r3
 lldi 2, %2, r3

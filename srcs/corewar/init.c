@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:49:57 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/05 16:59:19 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/12/11 03:10:35 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-void	initialize_players(t_header_t *player)
+void	players_init(t_header_t *player)
 {
 	uint8_t	i;
 
@@ -57,6 +57,7 @@ void	flag_init(void)
 {
 	g_flags.dump_nbr = -1;
 	g_flags.aff = NOT_SET;
+	g_flags.diss = NOT_SET;
 	g_flags.byte = NOT_SET;
 	g_flags.id = NOT_SET;
 	g_flags.verbose = 1;

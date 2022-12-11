@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrummuka <jrummuka@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 10:13:37 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/05 17:00:23 by jrummuka         ###   ########.fr       */
+/*   Updated: 2022/12/11 04:59:21 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,15 @@ static int	get_data(unsigned char *player_data, unsigned char *data, int size)
 void	assign_player(t_header_t *player, unsigned char *file,
 			int8_t id, uint16_t ret)
 {
-	static uint8_t	p_num;
 	uint16_t		idx;
 
-	player[p_num].id = id;
+	player->id = id;
 	idx = 4;
-	idx += get_data(player[p_num].prog_name, &file[idx], PROG_NAME_LENGTH);
-	idx += get_size(&player[p_num].prog_size, file, idx);
-	idx += get_data(player[p_num].comment, &file[idx], COMMENT_LENGTH);
-	check_matching_champ_size(player[p_num].prog_size, ret - idx);
-	player[p_num].code = ft_memalloc(ret - idx);
-	check_err_malloc(player[p_num].code);
-	get_data(player[p_num].code, &file[idx], player[p_num].prog_size);
-	p_num++;
+	idx += get_data(player->prog_name, &file[idx], PROG_NAME_LENGTH);
+	idx += get_size(&player->prog_size, file, idx);
+	idx += get_data(player->comment, &file[idx], COMMENT_LENGTH);
+	check_matching_champ_size(player->prog_size, ret - idx);
+	player->code = ft_memalloc(ret - idx);
+	check_err_malloc(player->code);
+	get_data(player->code, &file[idx], player->prog_size);
 }

@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:32:42 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/09 00:07:11 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/12/11 06:35:30 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ struct s_flag
 {
 	int8_t		id;
 	int8_t		aff;
+	int8_t		diss;
 	uint8_t		byte;
 	uint8_t		verbose;
 	uint64_t	dump_nbr;
@@ -176,7 +177,7 @@ int32_t		get_arg_value(t_process *process, t_arg *arg);
 int8_t		check_matching_arg(t_process *process, t_arg *arg);
 
 //init.c
-void		initialize_players(t_header_t *player);
+void		players_init(t_header_t *player);
 void		arena_init(t_header_t *player);
 void		game_init(t_game_param *game, t_process *head);
 void		flag_init(void);
@@ -184,4 +185,12 @@ void		flag_init(void);
 //print.c
 void		print_arena(t_header_t *player);
 void		print_arg(t_process *process, t_arg *arg);
+
+//disassembler.c
+void		disassembler(t_header_t *player, char *name);
+
+//disassembler_utils.c
+void		diss_arg_byte(t_header_t *player, int *code_idx, int op_i);
+void		diss_no_arg(t_header_t *player, int *code_idx, int op_i);
+
 #endif

@@ -25,10 +25,16 @@ we are asking you for a gladiator fight, not a one-man show simulator.
 
 `./corewar [optional flags] <your_champ.cor>` to have your champ go beat other people up
 
+### Disassembler
+
+`./corewar -diss <your_champ.cor>` to disassemble the champ back intto his crib
+
 ### Test script
 
 `./asm_apu.sh` to run tests for the assembler
+
 `./core_apu.sh` to run tests for the VM
+
 and follow the **VERY INTUITIVE** instructions
 
 ## Note

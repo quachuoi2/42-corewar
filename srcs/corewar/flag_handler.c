@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 23:49:29 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/09 00:09:00 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/12/11 03:09:31 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ static void	dump_flag(char **argv, int argc, uint8_t *i)
 	(*i)++;
 }
 
-static void	aff_flag(void)
-{
-	g_flags.aff = SET;
-}
-
 static void	verbose_flag(char **argv, int argc, uint8_t *i)
 {
 	check_valid_arg(argv, argc, *i);
@@ -50,9 +45,11 @@ void	flag_handler(char **argv, int argc, uint8_t *i)
 	else if (!ft_strcmp(argv[*i], "-dump") || !ft_strcmp(argv[*i], "-d"))
 		dump_flag(argv, argc, i);
 	else if (!ft_strcmp(argv[*i], "-a"))
-		aff_flag();
+		g_flags.aff = SET;
 	else if (!ft_strcmp(argv[*i], "-v"))
 		verbose_flag(argv, argc, i);
+	else if (!ft_strcmp(argv[*i], "-diss"))
+		g_flags.diss = SET;
 	else
 		print_man_page();
 }

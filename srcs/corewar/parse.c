@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 14:09:11 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/12/09 00:07:05 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/12/11 06:59:25 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static uint16_t	open_read_close(unsigned char *str, char *file)
 	return (ret);
 }
 
-void	introduce_le_champ(t_header_t *player)
+static void	introduce_le_champ(t_header_t *player)
 {
 	uint8_t	i;
 
@@ -47,21 +47,21 @@ void	parse(t_header_t *player, char **argv, int argc)
 	unsigned char	*str;
 
 	g_p_count = 0;
-	i = 1;
+	i = 0;
 	str = ft_memalloc(sizeof(unsigned char) * FILE_SIZE);
 	check_err_malloc(str);
-	while (i < argc)
+	while (++i < argc)
 	{
 		if (argv[i][0] == '-')
 			flag_handler(argv, argc, &i);
 		else
 		{
 			ret = open_read_close(str, argv[i]);
-			assign_player(player, str, g_flags.id, ret);
+			assign_player(&player[g_p_count], str, g_flags.id, ret);
 			g_flags.id = NOT_SET;
+			disassembler(&player[g_p_count], argv[i]);
 			g_p_count++;
 		}
-		i++;
 	}
 	check_num_within_range(g_p_count);
 	player_sort(player);
