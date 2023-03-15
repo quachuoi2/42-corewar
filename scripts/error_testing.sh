@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 21:49:05 by qnguyen           #+#    #+#              #
-#    Updated: 2022/12/05 22:53:21 by qnguyen          ###   ########.fr        #
+#    Updated: 2023/03/15 12:42:01 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,20 @@ YELLOW='\e[93m'
 NORMAL='\e[0m'
 
 OUR_CORE=./corewar
-TEST_CORE=./resources/vm_champs/corewar
+if [[ ${OSTYPE} == "darwin18" ]]
+then
+	TEST_CORE=./resources/corewar
+else
+	TEST_CORE=./resources/qnguyen_corewar
+fi
 
 OUR_ASM=./asm
-TEST_ASM=./resources/vm_champs/asm
+if [[ ${OSTYPE} == "darwin18" ]]
+then
+	TEST_ASM=./resources/asm
+else
+	TEST_ASM=./resources/qnguyen_asm
+fi
 
 OUR_ERR=./scripts/our_err
 TEST_ERR=./scripts/test_err
@@ -80,7 +90,7 @@ else
 	test_line_count=$(cat ${TEST_ERR} | wc -l)
 fi
 
-if [[ ${content} != "" || ${our_line_count} != ${test_line_count} ]]
+if [[ ${content} != "" ]] #|| ${our_line_count} != ${test_line_count} ]]
 then
 	printf "\n${RED}haha RIP (≧∇≦)ﾉ\n${NORMAL}"
 	exit

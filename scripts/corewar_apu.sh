@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/20 21:11:39 by qnguyen           #+#    #+#              #
-#    Updated: 2022/12/11 06:25:17 by qnguyen          ###   ########.fr        #
+#    Updated: 2023/03/15 12:39:20 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -190,6 +190,8 @@ do
 	if [[ ${file} != "chill" ]]
 	then
 		more_test
+	else
+		get_random
 	fi
 	test_v_flag
 done
